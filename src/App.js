@@ -1,12 +1,12 @@
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import LocationList from './components/locations/LocationList';
+import Locations from './pages/Locations';
 
 function App() {
   return (
-    <div className="bg-violet-100">
+    <div >
       <Navbar />
-      <LocationList />
+      <Locations />
       <Footer />
     </div>
   );
