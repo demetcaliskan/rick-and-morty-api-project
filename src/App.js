@@ -4,7 +4,7 @@ import LocationList from './components/locations/LocationList';
 
 function App() {
   return (
-    <div className="App">
+    <div className="bg-violet-100">
       <Navbar />
       <LocationList />
       <Footer />
