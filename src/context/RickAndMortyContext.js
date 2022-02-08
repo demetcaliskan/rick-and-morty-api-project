@@ -3,8 +3,6 @@ import rickAndMortyReducer from './RickAndMortyReducer'
 
 const RickAndMortyContext = createContext()
 
-const API_URL = 'https://rickandmortyapi.com/api'
-
 export const RickAndMortyProvider = ({ children }) => {
 
     const initialState = {
@@ -15,10 +13,13 @@ export const RickAndMortyProvider = ({ children }) => {
     const [state, dispatch] = useReducer(rickAndMortyReducer, initialState)
 
     const getLocations = async () => {
+
         setLoading()
 
-        const response = await fetch(`${API_URL}/locations`)
+        const response = await fetch(`https://rickandmortyapi.com/api/location`)
+
         const { results } = await response.json()
+        console.log(results)
 
         dispatch({
             type: 'GET_LOCATIONS',
@@ -26,13 +27,14 @@ export const RickAndMortyProvider = ({ children }) => {
         })
     }
 
-    const setLoading = () => discpatch({ type: 'SET_LOADING' })
+    const setLoading = () => dispatch({ type: 'SET_LOADING' })
 
 
     return <RickAndMortyContext.Provider value={{
         locations: state.locations,
         loading: state.loading,
-        getLocations
+        getLocations,
+        setLoading
     }}>
         {children}
     </RickAndMortyContext.Provider>
