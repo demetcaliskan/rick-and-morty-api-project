@@ -1,8 +1,10 @@
-function ResidentItem({ character }) {
+function ResidentItem({ itemID }) {
 
+    console.log(itemID)
 
     return (
-        <div>
+
+        <div className='card bg-black'>
 
         </div>
     )

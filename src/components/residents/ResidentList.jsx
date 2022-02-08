@@ -10,7 +10,11 @@ function ResidentList({ residents }) {
         <div>
             {
                 residents.forEach(element => {
-                    <ResidentItem itemID={element.substring(42)} />
+                    <div>
+                        <p>Hello</p>
+                        <ResidentItem itemID={element.substring(42)} />
+                    </div>
+
                 })
             }
 
