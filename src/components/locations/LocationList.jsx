@@ -10,8 +10,6 @@ function LocationList() {
         getLocations()
     }, [])
 
-    console.log(locations)
-
     return (
         <div className='grid grid-rows-1 grid-flow-row auto-rows-max gap-4 justify-items-center p-5 px-20'>
             {locations.map((location) => (

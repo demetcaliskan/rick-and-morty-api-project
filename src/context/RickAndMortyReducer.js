@@ -1,10 +1,21 @@
 const rickAndMortyReducer = (state, action) => {
     switch (action.type) {
         case 'GET_LOCATIONS':
-            console.log('Get locations is updated.')
             return {
                 ...state,
                 locations: action.payload,
+                loading: false
+            }
+        case 'GET_LOCATION':
+            return {
+                ...state,
+                location: action.payload,
+                loading: false
+            }
+        case 'GET_CHARACTER':
+            return {
+                ...state,
+                character: action.payload,
                 loading: false
             }
         case 'SET_LOADING':

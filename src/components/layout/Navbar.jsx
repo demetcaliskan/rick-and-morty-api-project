@@ -1,4 +1,5 @@
 import logo from './assets/logo.png'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
     return (
@@ -12,7 +13,9 @@ function Navbar() {
                         </div>
                         <div className="hidden sm:block sm:ml-6">
                             <div className="flex space-x-4">
-                                <a href="/" className="bg-white text-violet-500 px-3 py-2 rounded-md text-md font-medium" aria-current="page">Locations</a>
+                                <Link to="/" className="text-center bg-gray-900 text-white block rounded-md p-2 px-7 font-medium shadow-xl  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-60">
+                                    Locations
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -22,7 +25,9 @@ function Navbar() {
 
             <div className="sm:hidden" id="mobile-menu">
                 <div className="px-2 pt-2 pb-3 space-y-1">
-                    <a href="/" className="bg-gray-900 text-center text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Locations</a>
+                    <Link to="/" className="text-center bg-gray-900 text-white block rounded-md p-2 px-7 font-medium shadow-xl  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-60">
+                        Locations
+                    </Link>
                 </div>
             </div>
         </nav >
