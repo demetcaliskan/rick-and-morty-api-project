@@ -12,9 +12,10 @@ function LocationList() {
 
     return (
         <div className='grid grid-rows-1 grid-flow-row auto-rows-max gap-4 justify-items-center p-5 px-20'>
-            {locations.map((location) => (
-                <LocationItem key={location.id} location={location} />
-            ))}
+            {locations !== undefined &&
+                locations.map((location) => (
+                    <LocationItem key={location.id} location={location} />
+                ))}
         </div>
     )
 }

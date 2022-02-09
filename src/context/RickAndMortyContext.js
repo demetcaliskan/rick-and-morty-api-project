@@ -8,7 +8,7 @@ export const RickAndMortyProvider = ({ children }) => {
     const initialState = {
         locations: [],
         location: {},
-        character: {},
+        characters: [],
         loading: false
     }
 
@@ -40,16 +40,16 @@ export const RickAndMortyProvider = ({ children }) => {
         })
     }
 
-    const getCharacter = async (id) => {
+    const getCharacters = async (id_list) => {
         setLoading()
 
-        const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+        const response = await fetch(`https://rickandmortyapi.com/api/character/${id_list}`)
 
-        const character = await response.json()
+        const data = await response.json()
 
         dispatch({
-            type: 'GET_CHARACTER',
-            payload: character
+            type: 'GET_CHARACTERS',
+            payload: data
         })
     }
 
@@ -59,11 +59,11 @@ export const RickAndMortyProvider = ({ children }) => {
     return <RickAndMortyContext.Provider value={{
         locations: state.locations,
         location: state.location,
-        character: state.character,
+        characters: state.characters,
         loading: state.loading,
         getLocations,
         getLocation,
-        getCharacter,
+        getCharacters,
         setLoading
     }}>
         {children}

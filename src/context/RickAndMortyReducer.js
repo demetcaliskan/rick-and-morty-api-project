@@ -12,10 +12,10 @@ const rickAndMortyReducer = (state, action) => {
                 location: action.payload,
                 loading: false
             }
-        case 'GET_CHARACTER':
+        case 'GET_CHARACTERS':
             return {
                 ...state,
-                character: action.payload,
+                characters: action.payload,
                 loading: false
             }
         case 'SET_LOADING':

@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ResidentList from '../components/residents/ResidentList'
 import RickAndMortyContext from '../context/RickAndMortyContext'
+import ResidentList from '../components/residents/ResidentList'
 
 function Residents() {
 
@@ -15,9 +15,16 @@ function Residents() {
 
     const { residents } = location
 
+    const characterList = []
+
+    residents !== undefined &&
+        residents.forEach((resident) => {
+            characterList.push(parseInt(resident.substring(42)))
+        })
+
     return (
         <div className="bg-violet-100">
-            <ResidentList residents={residents} />
+            <ResidentList characterList={characterList} />
         </div>
     )
 }

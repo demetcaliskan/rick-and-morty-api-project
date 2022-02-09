@@ -1,21 +1,21 @@
+import { useEffect, useContext, useState } from 'react'
+import RickAndMortyContext from '../../context/RickAndMortyContext'
 import ResidentItem from './ResidentItem'
 
-function ResidentList({ residents }) {
+function ResidentList({ characterList }) {
 
-    console.log(residents)
+    const { getCharacters, characters } = useContext(RickAndMortyContext)
 
-
+    useEffect(() => {
+        getCharacters(characterList)
+    }, [])
 
     return (
-        <div>
-            {
-                residents.forEach(element => {
-                    <div>
-                        <p>Hello</p>
-                        <ResidentItem itemID={element.substring(42)} />
-                    </div>
-
-                })
+        <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 p-5'>
+            {characters !== undefined &&
+                characters.map((character, index) => (
+                    <ResidentItem key={index} character={character} />
+                ))
             }
 
         </div>
