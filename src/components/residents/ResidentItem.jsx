@@ -10,8 +10,6 @@ function ResidentItem({ character }) {
         image
     } = character
 
-    console.log(name)
-
     return (
 
         <div className='card shadow-xl rounded-md bg-violet-300 p-5'>

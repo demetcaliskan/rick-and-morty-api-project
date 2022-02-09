@@ -18,6 +18,11 @@ const rickAndMortyReducer = (state, action) => {
                 characters: action.payload,
                 loading: false
             }
+        case 'CLEAR_CHARACTERS':
+            return {
+                ...state,
+                characters: []
+            }
         case 'SET_LOADING':
             return {
                 ...state,

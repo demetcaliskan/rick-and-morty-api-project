@@ -53,6 +53,12 @@ export const RickAndMortyProvider = ({ children }) => {
         })
     }
 
+    const clearCharacters = () => {
+        dispatch({
+            type: 'CLEAR_CHARACTERS'
+        })
+    }
+
     const setLoading = () => dispatch({ type: 'SET_LOADING' })
 
 
@@ -64,6 +70,7 @@ export const RickAndMortyProvider = ({ children }) => {
         getLocations,
         getLocation,
         getCharacters,
+        clearCharacters,
         setLoading
     }}>
         {children}
