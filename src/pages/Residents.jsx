@@ -21,6 +21,7 @@ function Residents() {
         residents.forEach((resident) => {
             characterList.push(parseInt(resident.substring(42)))
         })
+
     if (!loading) {
         return (
             <div className="bg-violet-100">

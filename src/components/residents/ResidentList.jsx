@@ -4,11 +4,15 @@ import ResidentItem from './ResidentItem'
 
 function ResidentList({ characterList }) {
 
-    const { getCharacters, characters, loading } = useContext(RickAndMortyContext)
+    const { getCharacters, characters, loading, setLoading } = useContext(RickAndMortyContext)
 
     useEffect(() => {
-        getCharacters(characterList)
-    }, [])
+        if (loading) {
+            getCharacters(characterList)
+        } return () => {
+        };
+
+    })
 
     if (!loading) {
         return (
@@ -22,8 +26,10 @@ function ResidentList({ characterList }) {
             </div>
         )
     } else {
-        <p>Spinner</p>
+        return <p>Spinner</p>
     }
+
+
 
 }
 
