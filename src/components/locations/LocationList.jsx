@@ -4,10 +4,9 @@ import RickAndMortyContext from '../../context/RickAndMortyContext'
 
 function LocationList() {
 
-    const { getLocations, locations, loading, clearCharacters } = useContext(RickAndMortyContext)
+    const { getLocations, locations, loading } = useContext(RickAndMortyContext)
 
     useEffect(() => {
-        clearCharacters()
         getLocations()
     }, [])
 

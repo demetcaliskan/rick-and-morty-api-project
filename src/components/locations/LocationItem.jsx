@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 function LocationItem({ location: { id, type, dimension, residents } }) {
 
-
     return (
         <div className='min-w-full card shadow-xl rounded-md bg-violet-300 p-5 xl:flex xl:justify-between lg:flex lg:justify-between'>
             <div className='flex flex-row'>
