@@ -17,17 +17,12 @@ function ResidentList() {
         charIDList.push(parseInt(resident.substring(42)))
     })
 
-    console.log(charIDList)
-
     const [readyForRender, setReadyForRender] = useState(false)
 
     useEffect(() => {
-        console.log("hello")
         getCharacters(charIDList)
         setReadyForRender(true)
     }, [])
-
-    console.log(characters)
 
     if (charIDList.length <= 0) {
         return (
