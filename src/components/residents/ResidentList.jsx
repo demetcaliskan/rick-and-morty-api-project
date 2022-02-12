@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import RickAndMortyContext from '../../context/RickAndMortyContext'
 import ResidentItem from './ResidentItem'
+import Spinner from '../layout/Spinner'
 
 function ResidentList() {
 
@@ -45,7 +46,7 @@ function ResidentList() {
         return <ResidentItem key={characters.id} character={characters} />
     }
     else {
-        return <p>Spinner</p>
+        return <Spinner />
     }
 
 

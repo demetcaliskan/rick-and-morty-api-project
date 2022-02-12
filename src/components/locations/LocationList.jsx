@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
-import LocationItem from './LocationItem'
 import RickAndMortyContext from '../../context/RickAndMortyContext'
+import LocationItem from './LocationItem'
+import Spinner from '../layout/Spinner'
 
 function LocationList() {
 
@@ -20,7 +21,7 @@ function LocationList() {
             </div>
         )
     } else {
-        return <p>Spinner</p>
+        return <Spinner />
     }
 
 
