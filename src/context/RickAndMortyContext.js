@@ -30,6 +30,9 @@ export const RickAndMortyProvider = ({ children }) => {
     const getCharacters = async (id_list) => {
         setLoading()
 
+        console.log(id_list)
+        console.log(`https://rickandmortyapi.com/api/character/${id_list}`)
+
         const response = await fetch(`https://rickandmortyapi.com/api/character/${id_list}`)
 
         const data = await response.json()
