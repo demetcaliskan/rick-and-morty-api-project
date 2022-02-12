@@ -3,7 +3,9 @@ import ResidentList from '../components/residents/ResidentList'
 function Residents() {
 
     return (
-        <ResidentList />
+        <div className='flex flex-col h-max bg-violet-100'>
+            <ResidentList />
+        </div>
 
     )
 
