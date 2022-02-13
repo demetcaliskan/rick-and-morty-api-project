@@ -27,18 +27,46 @@ export const RickAndMortyProvider = ({ children }) => {
         })
     }
 
-    const getCharacters = async (id_list) => {
+    const getCharacters = async (location_id) => {
+
         setLoading()
 
-        const response = await fetch(`https://rickandmortyapi.com/api/character/${id_list}`)
+        let arr = [];
 
-        const data = await response.json()
+        const response = await fetch(
+            `https://rickandmortyapi.com/api/location/${location_id}`,
+        );
+
+        const { residents } = await response.json();
+
+        console.log(residents)
+
+        residents?.map(async (resident) => {
+            const res = await fetch(resident);
+            const obj = await res.json();
+            arr.push(obj)
+        });
+
+        console.log(arr)
 
         dispatch({
             type: 'GET_CHARACTERS',
-            payload: data
+            payload: arr
         })
-    }
+    };
+
+    // const getCharacters = async (id_list) => {
+    //     setLoading()
+
+    //     const response = await fetch(`https://rickandmortyapi.com/api/character/${id_list}`)
+
+    //     const data = await response.json()
+
+    //     dispatch({
+    //         type: 'GET_CHARACTERS',
+    //         payload: data
+    //     })
+    // }
 
     const setLoading = () => dispatch({ type: 'SET_LOADING' })
 
