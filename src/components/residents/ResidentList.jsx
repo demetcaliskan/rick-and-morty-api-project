@@ -17,37 +17,11 @@ function ResidentList() {
         setReadyForRender(true)
     }, [])
 
-    console.log(characters)
-    characters !== [] && console.log(characters.length)
-
-    characters !== undefined && characters.map((character) => (
-        // <ResidentItem key={character.id} character={character} />
-        character !== undefined && console.log(character)
-    ))
-
-
-    // if (readyForRender && !loading) {
-    //     return (
-    //         <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 p-5'>
-    //             {
-    //                 characters && characters.length > 0 && characters.map((character) => (
-    //                     <ResidentItem key={character.id} character={character} />
-    //                 ))
-    //             }
-
-    //         </div >
-    //     )
-    // } else {
-    //     return (
-    //         <p>Not ready.</p>
-    //     )
-    // }
-
 
     if (readyForRender && !loading && characters.length <= 0) {
         return (
-            <div>
-                <p>There is no resident living here!</p>
+            <div className='card shadow-xl rounded-md bg-violet-900 p-5 m-8'>
+                <h2 className='font-mono font-bold text-xl text-white'>There is no resident living here!</h2>
             </div>
         )
     } else if (!loading && readyForRender) {
