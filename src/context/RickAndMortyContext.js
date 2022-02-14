@@ -37,18 +37,16 @@ export const RickAndMortyProvider = ({ children }) => {
 
         const { residents } = await response.json()
 
-        let arr = []
-
-        residents !== undefined && residents.forEach(async (resident) => {
+        const arr = await Promise.all(residents.map(async (resident) => {
             const res = await fetch(resident)
-            const obj = await res.json()
-            obj !== undefined && arr.push(obj)
-        });
+            return await res.json()
+        }))
 
         dispatch({
             type: 'GET_CHARACTERS',
             payload: arr
         })
+
     };
 
     const setLoading = () => dispatch({ type: 'SET_LOADING' })
