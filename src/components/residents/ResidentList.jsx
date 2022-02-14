@@ -20,7 +20,7 @@ function ResidentList() {
 
     if (readyForRender && !loading && characters.length <= 0) {
         return (
-            <div className='card shadow-xl rounded-md bg-violet-900 p-5 m-8'>
+            <div className='card shadow-xl shadow-violet-500/50 rounded-md bg-violet-900 p-5 m-8'>
                 <h2 className='font-mono font-bold text-xl text-white'>There is no resident living here!</h2>
             </div>
         )
