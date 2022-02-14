@@ -12,26 +12,40 @@ function ResidentList() {
 
     const [readyForRender, setReadyForRender] = useState(false)
 
-
     useEffect(() => {
         getCharacters(params.id)
         setReadyForRender(true)
     }, [])
 
     console.log(characters)
-    console.log(readyForRender)
-    console.log(loading)
+    characters !== [] && console.log(characters.length)
 
-    return (
-        <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 p-5'>
-            {
-                characters !== undefined && characters.map((character) => (
-                    <ResidentItem key={character.id} character={character} />
-                ))
-            }
+    characters !== undefined && characters.map((character) => (
+        // <ResidentItem key={character.id} character={character} />
+        character !== undefined && console.log(character)
+    ))
 
-        </div>
-    )
+    characters !== [] && console.log('character 0: ', characters[0])
+
+
+    if (readyForRender && !loading) {
+        return (
+            <div className='grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 p-5'>
+                {
+                    characters && characters.length > 0 && characters.map((character) => (
+                        // <ResidentItem key={character.id} character={character} />
+                        console.log(character)
+                    ))
+                }
+
+            </div >
+        )
+    } else {
+        return (
+            <p>Not ready.</p>
+        )
+    }
+
 
     // if (readyForRender && !loading && characters.length <= 0) {
     //     return (

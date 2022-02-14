@@ -8,7 +8,9 @@ function LocationList() {
     const { getLocations, locations, loading } = useContext(RickAndMortyContext)
 
     useEffect(() => {
-        getLocations()
+        if (locations !== undefined) {
+            getLocations()
+        }
     }, [])
 
     if (!loading) {

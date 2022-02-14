@@ -31,23 +31,19 @@ export const RickAndMortyProvider = ({ children }) => {
 
         setLoading()
 
-        let arr = [];
-
         const response = await fetch(
             `https://rickandmortyapi.com/api/location/${location_id}`,
-        );
+        )
 
-        const { residents } = await response.json();
+        const { residents } = await response.json()
 
-        console.log(residents)
+        let arr = []
 
-        residents?.map(async (resident) => {
-            const res = await fetch(resident);
-            const obj = await res.json();
-            arr.push(obj)
+        residents !== undefined && residents.forEach(async (resident) => {
+            const res = await fetch(resident)
+            const obj = await res.json()
+            obj !== undefined && arr.push(obj)
         });
-
-        console.log(arr)
 
         dispatch({
             type: 'GET_CHARACTERS',
@@ -55,21 +51,7 @@ export const RickAndMortyProvider = ({ children }) => {
         })
     };
 
-    // const getCharacters = async (id_list) => {
-    //     setLoading()
-
-    //     const response = await fetch(`https://rickandmortyapi.com/api/character/${id_list}`)
-
-    //     const data = await response.json()
-
-    //     dispatch({
-    //         type: 'GET_CHARACTERS',
-    //         payload: data
-    //     })
-    // }
-
     const setLoading = () => dispatch({ type: 'SET_LOADING' })
-
 
     return <RickAndMortyContext.Provider value={{
         locations: state.locations,
