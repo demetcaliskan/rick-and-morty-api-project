@@ -17,7 +17,7 @@ function ResidentItem({ character }) {
             statusColor = 'text-green-500'
             break
         case 'unknown':
-            statusColor = 'text-gray-500'
+            statusColor = 'text-yellow-500'
             break
         case 'Dead':
             statusColor = 'text-red-500'
