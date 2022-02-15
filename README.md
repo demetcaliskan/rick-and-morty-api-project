@@ -4,11 +4,12 @@ Single page application which shows locations and residents that live in that sp
 
 ## Project Screen Shots 
 
-![LocationsPage]()
-![ResidentsPage]()
-![HoverResident]()
-![LocationsPageMobile]()
-![ResidentsPageMobile]()
+![LocationsPage](https://github.com/demetcaliskan/rick-and-morty-api-project/blob/master/locations.png)
+![ResidentsPage](https://github.com/demetcaliskan/rick-and-morty-api-project/blob/master/residents.png)
+![HoverResident](https://github.com/demetcaliskan/rick-and-morty-api-project/blob/master/resident-hover.png)
+![LocationsPageMobile](https://github.com/demetcaliskan/rick-and-morty-api-project/blob/master/locations-mobile.png)
+![ResidentsPageMobile](https://github.com/demetcaliskan/rick-and-morty-api-project/blob/master/resident-page-mobile.png)
+![NoResidentsPage](https://github.com/demetcaliskan/rick-and-morty-api-project/blob/master/no-residents-page.png)
 
 
 ## Installation and Setup Instructions
