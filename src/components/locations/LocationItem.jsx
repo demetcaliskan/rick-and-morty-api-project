@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function LocationItem({ location: { id, type, dimension, residents } }) {
 
     return (
-        <div className='min-w-full card shadow-xl rounded-md bg-violet-300 p-5 xl:flex xl:justify-between lg:flex lg:justify-between shadow-indigo-600/50'>
+        <div className='min-w-full card shadow-xl rounded-md bg-violet-300 p-5 xl:flex xl:justify-between lg:flex lg:justify-between md:grid md:justify-items-center sm:grid sm:justify-items-center sm:place-items-center shadow-indigo-600/50'>
             <div className='flex flex-row'>
                 <div>
                     <FcNightLandscape className='h-20 w-20 pr-10' />
