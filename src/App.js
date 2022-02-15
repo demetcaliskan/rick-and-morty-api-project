@@ -9,7 +9,7 @@ function App() {
   return (
     <RickAndMortyProvider>
       <Router>
-        <div className="flex flex-col h-screen bg-violet-100">
+        <div className="flex flex-col h-screen justify-between bg-violet-100">
           <Navbar />
           <Routes>
             <Route path='/' element={<Locations />} />
