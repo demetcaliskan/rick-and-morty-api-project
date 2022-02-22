@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react'
+import axios from 'axios'
 import rickAndMortyReducer from './RickAndMortyReducer'
 
 const RickAndMortyContext = createContext()
@@ -17,13 +18,16 @@ export const RickAndMortyProvider = ({ children }) => {
 
         setLoading()
 
-        const response = await fetch(`https://rickandmortyapi.com/api/location`)
+        const res = await axios.get(`https://rickandmortyapi.com/api/location`)
+        console.log(res.data.results)
 
-        const { results } = await response.json()
+        // const response = await fetch(`https://rickandmortyapi.com/api/location`)
+
+        // const { results } = await response.json()
 
         dispatch({
             type: 'GET_LOCATIONS',
-            payload: results
+            payload: res.data.results
         })
     }
 
@@ -31,20 +35,31 @@ export const RickAndMortyProvider = ({ children }) => {
 
         setLoading()
 
-        const response = await fetch(
-            `https://rickandmortyapi.com/api/location/${location_id}`,
-        )
+        // const response = await fetch(
+        //     `https://rickandmortyapi.com/api/location/${location_id}`,
+        // )
 
-        const { residents } = await response.json()
+        const resp = await axios.get(`https://rickandmortyapi.com/api/location/${location_id}`)
+        const resArr = resp.data.residents
 
-        const arr = await Promise.all(residents.map(async (resident) => {
-            const res = await fetch(resident)
-            return await res.json()
+        const ar = await axios.all(resArr.map(async (r) => {
+            const x = await axios.get(r)
+            return x.data
         }))
+
+        console.log(ar)
+
+        // const { residents } = await response.json()
+
+        // const arr = await Promise.all(residents.map(async (resident) => {
+        //     const res = await fetch(resident)
+        //     return await res.json()
+        // }))
+        // console.log(arr)
 
         dispatch({
             type: 'GET_CHARACTERS',
-            payload: arr
+            payload: ar
         })
 
     };
