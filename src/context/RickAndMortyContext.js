@@ -16,63 +16,58 @@ export const RickAndMortyProvider = ({ children }) => {
 
     const getLocations = async () => {
 
-        setLoading()
+        try {
+            dispatch({ type: 'GET_LOCATIONS_REQUEST' })
+            const res = await axios.get(`https://rickandmortyapi.com/api/location`)
+            dispatch({
+                type: 'GET_LOCATIONS_SUCCESS',
+                payload: res.data.results
+            })
 
-        const res = await axios.get(`https://rickandmortyapi.com/api/location`)
-        console.log(res.data.results)
-
-        // const response = await fetch(`https://rickandmortyapi.com/api/location`)
-
-        // const { results } = await response.json()
-
-        dispatch({
-            type: 'GET_LOCATIONS',
-            payload: res.data.results
-        })
+        } catch (error) {
+            dispatch({
+                type: "GET_LOCATIONS_FAIL",
+                error: error,
+            });
+        }
     }
 
     const getCharacters = async (location_id) => {
 
-        setLoading()
+        try {
+            dispatch({
+                type: "GET_ALL_CHARACTERS_REQUEST",
+            });
+            const resp = await axios.get(
+                `https://rickandmortyapi.com/api/location/${location_id}`
+            );
+            const resArr = resp.data.residents;
 
-        // const response = await fetch(
-        //     `https://rickandmortyapi.com/api/location/${location_id}`,
-        // )
+            const ar = await axios.all(
+                resArr.map(async (r) => {
+                    const x = await axios.get(r);
+                    return x.data;
+                })
+            );
 
-        const resp = await axios.get(`https://rickandmortyapi.com/api/location/${location_id}`)
-        const resArr = resp.data.residents
-
-        const ar = await axios.all(resArr.map(async (r) => {
-            const x = await axios.get(r)
-            return x.data
-        }))
-
-        console.log(ar)
-
-        // const { residents } = await response.json()
-
-        // const arr = await Promise.all(residents.map(async (resident) => {
-        //     const res = await fetch(resident)
-        //     return await res.json()
-        // }))
-        // console.log(arr)
-
-        dispatch({
-            type: 'GET_CHARACTERS',
-            payload: ar
-        })
-
+            dispatch({
+                type: "GET_ALL_CHARACTERS_SUCCESS",
+                payload: ar,
+            });
+        } catch (error) {
+            dispatch({
+                type: "GET_ALL_CHARACTERS_FAIL",
+                error: error,
+            });
+        }
     };
-
-    const setLoading = () => dispatch({ type: 'SET_LOADING' })
 
     return <RickAndMortyContext.Provider value={{
         locations: state.locations,
         characters: state.characters,
         loading: state.loading,
         getLocations,
-        getCharacters,
-        setLoading
+        getCharacters
     }}>
         {children}
     </RickAndMortyContext.Provider>
