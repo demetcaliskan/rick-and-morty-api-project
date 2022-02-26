@@ -1,5 +1,4 @@
 import { createContext, useReducer } from 'react'
-import axios from 'axios'
 import rickAndMortyReducer from './RickAndMortyReducer'
 import instance from './network'
 
