@@ -31,7 +31,6 @@ function ResidentList() {
                         <ResidentItem key={character.id} character={character} />
                     ))
                 }
-
             </div>
         )
     }
