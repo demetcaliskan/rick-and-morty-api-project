@@ -1,6 +1,7 @@
 import { createContext, useReducer } from 'react'
 import axios from 'axios'
 import rickAndMortyReducer from './RickAndMortyReducer'
+import instance from './network'
 
 const RickAndMortyContext = createContext()
 
@@ -18,7 +19,7 @@ export const RickAndMortyProvider = ({ children }) => {
 
         try {
             dispatch({ type: 'GET_LOCATIONS_REQUEST' })
-            const res = await axios.get(`https://rickandmortyapi.com/api/location`)
+            const res = await instance.get(`/location`)
             dispatch({
                 type: 'GET_LOCATIONS_SUCCESS',
                 payload: res.data.results
@@ -33,27 +34,30 @@ export const RickAndMortyProvider = ({ children }) => {
     }
 
     const getCharacters = async (location_id) => {
-
         try {
             dispatch({
                 type: "GET_ALL_CHARACTERS_REQUEST",
             });
-            const resp = await axios.get(
-                `https://rickandmortyapi.com/api/location/${location_id}`
-            );
+            const resp = await instance.get(`/location/${location_id}`);
             const resArr = resp.data.residents;
-
-            const ar = await axios.all(
-                resArr.map(async (r) => {
-                    const x = await axios.get(r);
-                    return x.data;
-                })
-            );
-
-            dispatch({
-                type: "GET_ALL_CHARACTERS_SUCCESS",
-                payload: ar,
+            let ids = "";
+            resArr.map((resident) => {
+                const residentArr = resident.split("/");
+                return (ids += residentArr[residentArr.length - 1] + ",");
             });
+
+            if (ids !== "") {
+                const { data } = await instance.get(`/character/${ids}`);
+                dispatch({
+                    type: "GET_ALL_CHARACTERS_SUCCESS",
+                    payload: data,
+                });
+            } else {
+                dispatch({
+                    type: "GET_ALL_CHARACTERS_SUCCESS",
+                    payload: [],
+                });
+            }
         } catch (error) {
             dispatch({
                 type: "GET_ALL_CHARACTERS_FAIL",

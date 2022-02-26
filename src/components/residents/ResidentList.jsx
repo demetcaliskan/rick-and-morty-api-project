@@ -14,6 +14,8 @@ function ResidentList() {
         getCharacters(params.id)
     }, [])
 
+    console.log(characters)
+
 
     if (!loading && characters.length <= 0) {
         return (
