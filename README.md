@@ -35,5 +35,9 @@ To Visit App:
 ## Dependencies
 
 [Rick And Morty API](https://rickandmortyapi.com/)
+
 [React](https://reactjs.org/)
+
 [Tailwind CSS](https://tailwindcss.com/)
+
+[Axios](https://axios-http.com/docs/intro)
