@@ -27,7 +27,7 @@ function ResidentItem({ character }) {
     }
 
     return (
-        <div className='card shadow-xl rounded-md bg-violet-300 p-5 w-full font-mono shadow-violet-500/50 transition duration-500 ease-in-out transform hover:-translate-y-0.5 hover:scale-110'>
+        <section className='card shadow-xl rounded-md bg-violet-300 p-5 w-full font-mono shadow-violet-500/50 transition duration-500 ease-in-out transform hover:-translate-y-0.5 hover:scale-110'>
             <div className='grid grid-cols-2 justify-items-evenly divide-x divide-dashed divide-black'>
                 <div className='ml-7 flex flex-col gap-1 place-items-start'>
                     <img className='w-24 h-24' src={image} alt={name} />
@@ -46,7 +46,7 @@ function ResidentItem({ character }) {
             </div>
 
 
-        </div>
+        </section>
     )
 }
 
