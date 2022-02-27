@@ -28,42 +28,42 @@ export const RickAndMortyProvider = ({ children }) => {
             dispatch({
                 type: "GET_LOCATIONS_FAIL",
                 error: error,
-            });
+            })
         }
     }
 
     const getCharacters = async (location_id) => {
         try {
             dispatch({
-                type: "GET_ALL_CHARACTERS_REQUEST",
+                type: "GET_CHARACTERS_REQUEST",
             });
-            const resp = await instance.get(`/location/${location_id}`);
-            const resArr = resp.data.residents;
-            let ids = "";
+            const resp = await instance.get(`/location/${location_id}`)
+            const resArr = resp.data.residents
+            let ids = ""
             resArr.map((resident) => {
-                const residentArr = resident.split("/");
-                return (ids += residentArr[residentArr.length - 1] + ",");
-            });
+                const residentArr = resident.split("/")
+                return (ids += residentArr[residentArr.length - 1] + ",")
+            })
 
             if (ids !== "") {
-                const { data } = await instance.get(`/character/${ids}`);
+                const { data } = await instance.get(`/character/${ids}`)
                 dispatch({
-                    type: "GET_ALL_CHARACTERS_SUCCESS",
+                    type: "GET_CHARACTERS_SUCCESS",
                     payload: data,
-                });
+                })
             } else {
                 dispatch({
-                    type: "GET_ALL_CHARACTERS_SUCCESS",
+                    type: "GET_CHARACTERS_SUCCESS",
                     payload: [],
-                });
+                })
             }
         } catch (error) {
             dispatch({
-                type: "GET_ALL_CHARACTERS_FAIL",
+                type: "GET_CHARACTERS_FAIL",
                 error: error,
-            });
+            })
         }
-    };
+    }
 
     return <RickAndMortyContext.Provider value={{
         locations: state.locations,

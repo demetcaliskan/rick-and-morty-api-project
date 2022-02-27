@@ -14,9 +14,6 @@ function ResidentList() {
         getCharacters(params.id)
     }, [])
 
-    console.log(characters)
-
-
     if (!loading && characters.length <= 0) {
         return (
             <div className='card shadow-xl shadow-violet-500/50 rounded-md bg-violet-900 p-5 m-8'>

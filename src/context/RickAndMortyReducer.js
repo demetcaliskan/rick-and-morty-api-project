@@ -17,18 +17,18 @@ const rickAndMortyReducer = (state, action) => {
                 loading: false,
                 error: action.payload
             }
-        case "GET_ALL_CHARACTERS_REQUEST":
+        case "GET_CHARACTERS_REQUEST":
             return {
                 ...state,
                 loading: true,
             }
-        case "GET_ALL_CHARACTERS_SUCCESS":
+        case "GET_CHARACTERS_SUCCESS":
             return {
                 ...state,
                 loading: false,
                 characters: action.payload,
             }
-        case "GET_ALL_CHARACTERS_FAIL":
+        case "GET_CHARACTERS_FAIL":
             return {
                 ...state,
                 loading: false,
